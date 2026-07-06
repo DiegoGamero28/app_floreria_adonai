@@ -1,0 +1,67 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Dashboard | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="page-header compact">
+  <div class="container">
+    <p class="eyebrow">Panel interno</p>
+    <h1>Dashboard</h1>
+  </div>
+</section>
+
+<section class="container py-4">
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3"><div class="stat-card"><span>Productos</span><strong>{{ total_productos }}</strong></div></div>
+    <div class="col-6 col-lg-3"><div class="stat-card"><span>Clientes</span><strong>{{ total_clientes }}</strong></div></div>
+    <div class="col-6 col-lg-3"><div class="stat-card"><span>Ventas</span><strong>{{ total_ventas }}</strong></div></div>
+    <div class="col-6 col-lg-3"><div class="stat-card"><span>Total vendido</span><strong>S/ {{ total_vendido|floatformat:2 }}</strong></div></div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <div class="tool-panel h-100">
+        <h2 class="h5 mb-3">Productos con stock bajo</h2>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead><tr><th>Producto</th><th>Stock</th><th>Mínimo</th></tr></thead>
+            <tbody>
+              {% for producto in productos_stock_bajo %}
+                <tr>
+                  <td>{{ producto.nombre }}</td>
+                  <td><span class="badge text-bg-warning">{{ producto.stock }}</span></td>
+                  <td>{{ producto.stock_minimo }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="3" class="text-muted">No hay alertas de stock.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="tool-panel h-100">
+        <h2 class="h5 mb-3">Ventas recientes</h2>
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead><tr><th>Fecha</th><th>Cliente</th><th>Estado</th><th>Total</th></tr></thead>
+            <tbody>
+              {% for venta in ventas_recientes %}
+                <tr>
+                  <td>{{ venta.fecha|date:'d/m/Y H:i' }}</td>
+                  <td><a href="{% url 'gestion:venta_detalle' venta.pk %}">{{ venta.cliente_visible }}</a></td>
+                  <td><span class="badge status-{{ venta.estado }}">{{ venta.get_estado_display }}</span></td>
+                  <td>S/ {{ venta.total|floatformat:2 }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="4" class="text-muted">Aún no hay ventas registradas.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

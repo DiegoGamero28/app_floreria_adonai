@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-label="Producto floral">
+  <rect width="900" height="560" fill="#f8efe9"/>
+  <rect x="70" y="70" width="760" height="420" rx="26" fill="#ffffff" opacity="0.82"/>
+  <path d="M210 368c78-135 221-158 320-53 36 39 66 75 132 61" fill="none" stroke="#2f6f4e" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="330" cy="230" r="52" fill="#c95670"/>
+  <circle cx="392" cy="201" r="48" fill="#e7a1ae"/>
+  <circle cx="440" cy="260" r="56" fill="#c95670"/>
+  <circle cx="496" cy="214" r="44" fill="#f2cbd3"/>
+  <circle cx="548" cy="272" r="52" fill="#d9798e"/>
+  <circle cx="448" cy="252" r="31" fill="#c69b4c"/>
+  <path d="M312 345c-34-42-45-90-29-142 55 28 84 68 88 122" fill="#7faa6c"/>
+  <path d="M545 354c22-49 62-77 121-84-8 63-42 99-99 111" fill="#8bb47a"/>
+  <text x="450" y="468" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#24553c">Florería Adonai</text>
+</svg>

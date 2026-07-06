@@ -1,0 +1,19 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Registrar venta | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="tool-panel form-panel">
+    <h1 class="h3 mb-3">Registrar venta interna</h1>
+    <form method="post">
+      {% csrf_token %}
+      {% include 'gestion/_form_fields.html' with form=form %}
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary" type="submit">Guardar venta</button>
+        <a class="btn btn-outline-secondary" href="{% url 'gestion:ventas_lista' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

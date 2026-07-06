@@ -1,0 +1,43 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Clientes | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="page-header compact">
+  <div class="container d-flex flex-column flex-md-row justify-content-between gap-3">
+    <div>
+      <p class="eyebrow">Base de datos</p>
+      <h1>Clientes</h1>
+    </div>
+    <div class="d-flex align-items-end gap-2">
+      <a class="btn btn-primary" href="{% url 'gestion:cliente_crear' %}">Nuevo cliente</a>
+      <a class="btn btn-outline-secondary" href="{% url 'gestion:importar_csv' %}">Importar CSV</a>
+    </div>
+  </div>
+</section>
+
+<section class="container py-4">
+  <form class="row g-2 mb-3" method="get">
+    <div class="col-md-10"><input class="form-control" name="q" value="{{ query }}" placeholder="Buscar clientes"></div>
+    <div class="col-md-2 d-grid"><button class="btn btn-outline-primary" type="submit">Buscar</button></div>
+  </form>
+  <div class="table-responsive tool-panel">
+    <table class="table align-middle mb-0">
+      <thead><tr><th>Nombre</th><th>Teléfono</th><th>Dirección</th><th>Registro</th><th></th></tr></thead>
+      <tbody>
+        {% for cliente in clientes %}
+          <tr>
+            <td><a href="{% url 'gestion:cliente_detalle' cliente.pk %}">{{ cliente.nombre }}</a></td>
+            <td>{{ cliente.telefono|default:'-' }}</td>
+            <td>{{ cliente.direccion|default:'-' }}</td>
+            <td>{{ cliente.fecha_registro|date:'d/m/Y' }}</td>
+            <td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'gestion:cliente_editar' cliente.pk %}">Editar</a></td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="5" class="text-muted">No hay clientes registrados.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

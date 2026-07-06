@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1600" height="800" fill="#f7ede7"/>
+  <path d="M990 728c-10-227 151-421 438-578" fill="none" stroke="#2f6f4e" stroke-width="24" stroke-linecap="round"/>
+  <path d="M1122 567c-108-40-178-112-209-217 137 16 220 80 249 193" fill="#7faa6c"/>
+  <path d="M1268 423c-37-113-20-213 51-299 82 100 91 203 28 309" fill="#8ab47b"/>
+  <path d="M1128 256c-89-86-124-185-104-296 117 70 171 163 161 279" fill="#a4c493"/>
+  <circle cx="1260" cy="218" r="82" fill="#c95670"/>
+  <circle cx="1352" cy="162" r="76" fill="#e7a1ae"/>
+  <circle cx="1438" cy="248" r="88" fill="#c95670"/>
+  <circle cx="1346" cy="300" r="72" fill="#f2cbd3"/>
+  <circle cx="1352" cy="232" r="42" fill="#c69b4c"/>
+  <circle cx="1038" cy="492" r="72" fill="#d9798e"/>
+  <circle cx="1108" cy="440" r="58" fill="#f2cbd3"/>
+  <circle cx="1165" cy="510" r="68" fill="#c95670"/>
+  <circle cx="1105" cy="492" r="34" fill="#c69b4c"/>
+  <path d="M0 696c168-41 343-43 525-8 176 34 360 31 552-9 175-37 349-40 523-10v131H0z" fill="#ffffff" opacity="0.55"/>
+</svg>

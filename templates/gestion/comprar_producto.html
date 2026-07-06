@@ -1,0 +1,42 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+
+{% block title %}Comprar {{ producto.nombre }} | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-5">
+      <div class="card product-card">
+        {% if producto.imagen %}
+          <img src="{{ producto.imagen.url }}" class="card-img-top product-img product-img-large" alt="{{ producto.nombre }}">
+        {% else %}
+          <img src="{% static 'img/placeholder_producto.svg' %}" class="card-img-top product-img product-img-large" alt="{{ producto.nombre }}">
+        {% endif %}
+        <div class="card-body">
+          <span class="badge text-bg-light mb-2">{{ producto.categoria.nombre }}</span>
+          <h1 class="h3">{{ producto.nombre }}</h1>
+          <p class="text-muted">{{ producto.descripcion }}</p>
+          <div class="d-flex justify-content-between">
+            <strong class="price fs-4">S/ {{ producto.precio|floatformat:2 }}</strong>
+            <span class="text-muted">Stock: {{ producto.stock }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="tool-panel">
+        <h2 class="h4 mb-3">Confirmar pedido</h2>
+        <form method="post">
+          {% csrf_token %}
+          {% include 'gestion/_form_fields.html' with form=form %}
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Registrar pedido</button>
+            <a class="btn btn-outline-secondary" href="{% url 'gestion:catalogo' %}">Volver</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

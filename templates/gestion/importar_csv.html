@@ -1,0 +1,55 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}Importar CSV | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="page-header compact">
+  <div class="container">
+    <p class="eyebrow">Carga masiva</p>
+    <h1>Importar CSV</h1>
+  </div>
+</section>
+
+<section class="container py-4">
+  {% if resumen %}
+    <div class="alert {% if resumen.errores %}alert-warning{% else %}alert-success{% endif %}">
+      <strong>Resumen de {{ resumen.tipo }}:</strong>
+      creados {{ resumen.creados }}, actualizados {{ resumen.actualizados }}.
+      {% if resumen.errores %}
+        <ul class="mb-0 mt-2">
+          {% for error in resumen.errores %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="tool-panel h-100">
+        <h2 class="h5">Importar productos</h2>
+        <p class="small text-muted">Columnas: <code>nombre,categoria,descripcion,precio,stock,stock_minimo,activo</code></p>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="hidden" name="tipo" value="productos">
+          {% include 'gestion/_form_fields.html' with form=producto_form %}
+          <button class="btn btn-primary" type="submit">Subir productos</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="tool-panel h-100">
+        <h2 class="h5">Importar clientes</h2>
+        <p class="small text-muted">Columnas: <code>nombre,telefono,direccion,observaciones</code></p>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="hidden" name="tipo" value="clientes">
+          {% include 'gestion/_form_fields.html' with form=cliente_form %}
+          <button class="btn btn-primary" type="submit">Subir clientes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

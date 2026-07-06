@@ -1,0 +1,43 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+
+{% block title %}Pedido confirmado | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="confirmation-layout">
+    <div class="tool-panel">
+      <p class="eyebrow">Pedido registrado</p>
+      <h1 class="h3">Pago pendiente por Yape</h1>
+      <p class="lead">
+        Por favor, realiza el pago por S/ {{ venta.total|floatformat:2 }} a este número de Yape: {{ floreria.yape }}.
+      </p>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for detalle in venta.detalles.all %}
+              <tr>
+                <td>{{ detalle.producto.nombre }}</td>
+                <td>{{ detalle.cantidad }}</td>
+                <td>S/ {{ detalle.subtotal|floatformat:2 }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <a class="btn btn-success btn-lg" href="{{ whatsapp_url }}" target="_blank" rel="noreferrer">Confirmar por WhatsApp</a>
+    </div>
+    <div class="qr-panel">
+      <img src="{% static floreria.qr_yape_static %}" alt="QR de Yape" class="qr-img">
+      <p class="small text-muted mt-3 mb-0">Imagen configurable en <code>FLORERIA_QR_YAPE_STATIC</code>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

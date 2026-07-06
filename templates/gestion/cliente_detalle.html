@@ -1,0 +1,46 @@
+{% extends 'gestion/base.html' %}
+
+{% block title %}{{ cliente.nombre }} | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+    <div>
+      <p class="eyebrow">Detalle de cliente</p>
+      <h1>{{ cliente.nombre }}</h1>
+      <p class="text-muted mb-0">{{ cliente.telefono|default:'Sin teléfono' }} · {{ cliente.direccion|default:'Sin dirección' }}</p>
+    </div>
+    <div class="d-flex align-items-start gap-2">
+      <a class="btn btn-outline-primary" href="{% url 'gestion:cliente_editar' cliente.pk %}">Editar</a>
+      <a class="btn btn-outline-secondary" href="{% url 'gestion:clientes_lista' %}">Volver</a>
+    </div>
+  </div>
+
+  <div class="tool-panel mb-4">
+    <h2 class="h5">Observaciones</h2>
+    <p class="mb-0">{{ cliente.observaciones|default:'Sin observaciones.' }}</p>
+  </div>
+
+  <div class="tool-panel">
+    <h2 class="h5 mb-3">Historial de compras</h2>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead><tr><th>Fecha</th><th>Canal</th><th>Estado</th><th>Total</th><th></th></tr></thead>
+        <tbody>
+          {% for venta in cliente.ventas.all %}
+            <tr>
+              <td>{{ venta.fecha|date:'d/m/Y H:i' }}</td>
+              <td>{{ venta.get_canal_display }}</td>
+              <td><span class="badge status-{{ venta.estado }}">{{ venta.get_estado_display }}</span></td>
+              <td>S/ {{ venta.total|floatformat:2 }}</td>
+              <td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'gestion:venta_detalle' venta.pk %}">Ver</a></td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5" class="text-muted">Este cliente no tiene compras registradas.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

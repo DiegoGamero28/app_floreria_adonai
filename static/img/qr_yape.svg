@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-label="QR Yape demo">
+  <rect width="520" height="520" rx="24" fill="#ffffff"/>
+  <rect x="24" y="24" width="472" height="472" rx="18" fill="#6f2da8"/>
+  <rect x="52" y="52" width="416" height="416" fill="#ffffff"/>
+  <g fill="#222222">
+    <rect x="76" y="76" width="112" height="112"/>
+    <rect x="332" y="76" width="112" height="112"/>
+    <rect x="76" y="332" width="112" height="112"/>
+    <rect x="108" y="108" width="48" height="48" fill="#ffffff"/>
+    <rect x="364" y="108" width="48" height="48" fill="#ffffff"/>
+    <rect x="108" y="364" width="48" height="48" fill="#ffffff"/>
+    <rect x="220" y="76" width="28" height="28"/>
+    <rect x="276" y="76" width="28" height="28"/>
+    <rect x="220" y="132" width="56" height="28"/>
+    <rect x="248" y="188" width="28" height="56"/>
+    <rect x="304" y="216" width="28" height="28"/>
+    <rect x="360" y="216" width="84" height="28"/>
+    <rect x="220" y="276" width="28" height="84"/>
+    <rect x="276" y="276" width="56" height="28"/>
+    <rect x="388" y="276" width="56" height="28"/>
+    <rect x="248" y="360" width="56" height="28"/>
+    <rect x="332" y="332" width="28" height="84"/>
+    <rect x="388" y="360" width="56" height="28"/>
+    <rect x="220" y="416" width="28" height="28"/>
+    <rect x="276" y="416" width="28" height="28"/>
+    <rect x="416" y="416" width="28" height="28"/>
+  </g>
+  <text x="260" y="496" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Yape demo</text>
+</svg>

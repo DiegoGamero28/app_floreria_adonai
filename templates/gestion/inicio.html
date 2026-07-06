@@ -1,0 +1,73 @@
+{% extends 'gestion/base.html' %}
+{% load static %}
+
+{% block title %}Inicio | {{ floreria.nombre }}{% endblock %}
+
+{% block content %}
+<section class="hero-home">
+  <div class="container hero-content">
+    <p class="eyebrow">Detalles florales para cada ocasión</p>
+    <h1>{{ floreria.nombre }}</h1>
+    <p class="lead">{{ floreria.promo }}</p>
+    <div class="d-flex flex-column flex-sm-row gap-2">
+      <a class="btn btn-primary btn-lg" href="{% url 'gestion:catalogo' %}">Ver catálogo</a>
+      <a class="btn btn-success btn-lg" href="https://wa.me/{{ floreria.whatsapp }}" target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="section-heading">
+    <p class="eyebrow">Categorías principales</p>
+    <h2>Regalos listos para vender</h2>
+  </div>
+  <div class="row g-3">
+    {% for categoria in categorias %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <a class="category-tile" href="{% url 'gestion:catalogo' %}?q={{ categoria.nombre }}">
+          <span>{{ categoria.nombre }}</span>
+        </a>
+      </div>
+    {% empty %}
+      <div class="col-6 col-md-4 col-lg-3"><div class="category-tile"><span>Flores</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="category-tile"><span>Peluches</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="category-tile"><span>Globos</span></div></div>
+      <div class="col-6 col-md-4 col-lg-3"><div class="category-tile"><span>Chocolates</span></div></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="campaign-band">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-3"><div class="campaign-item">Día de la Madre</div></div>
+      <div class="col-md-3"><div class="campaign-item">San Valentín</div></div>
+      <div class="col-md-3"><div class="campaign-item">Cumpleaños</div></div>
+      <div class="col-md-3"><div class="campaign-item">Aniversarios</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-2 mb-3">
+    <div class="section-heading mb-0">
+      <p class="eyebrow">Productos destacados</p>
+      <h2>Catálogo digital</h2>
+    </div>
+    <a class="btn btn-outline-primary" href="{% url 'gestion:catalogo' %}">Ver todos</a>
+  </div>
+  <div class="row g-4">
+    {% for producto in destacados %}
+      <div class="col-sm-6 col-lg-4">
+        {% include 'gestion/_producto_card.html' %}
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="empty-state">
+          Agrega productos o ejecuta <code>python manage.py seed_demo</code> para ver el catálogo con datos iniciales.
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

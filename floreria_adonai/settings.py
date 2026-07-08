@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lth4h+rmb$e)5e4djf)(pm@^6k=sii*06uay=^b@$)om1)@de$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['floreria-adonai.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -117,6 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'

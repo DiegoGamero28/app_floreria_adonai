@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-lth4h+rmb$e)5e4djf)(pm@^6k=sii*06uay=^b@$)om1)@de$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['floreria-adonai.pythonanywhere.com', '127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = ['floreria-adonai.pythonanywhere.com', 'dgamero.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 # Application definition
 

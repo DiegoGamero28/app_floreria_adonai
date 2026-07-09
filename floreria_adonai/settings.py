@@ -128,7 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuración simple del prototipo Florería Adonai.
 FLORERIA_NOMBRE = 'Florería Adonai'
-FLORERIA_YAPE = '999999999'
-FLORERIA_WHATSAPP = '51999999999'
+FLORERIA_YAPE = '955646110'
+FLORERIA_WHATSAPP = '51955646110'
 FLORERIA_PROMO = 'Arreglos florales, detalles y regalos listos para sorprender.'
 FLORERIA_QR_YAPE_STATIC = 'img/qr_yape.svg'
